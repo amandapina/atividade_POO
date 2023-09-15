@@ -1,30 +1,77 @@
-
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        Retangulo a = new Retangulo();
-        a.altura = 2;
-        a.largura = 4;
-        System.out.println("area do retângulo:" + a.area_retangulo(a.altura, a.largura));
-        System.out.println("perimetro do retângulo:" + a.perimetro_retangulo(a.altura, a.largura));
+        System.out.println("selecione a operação:");
+        System.out.println("1 - Calcular perímetro");
+        System.out.println("2 - Calcular área");
 
-        Quadrado b = new Quadrado();
-        b.lado = 3;
-        System.out.println("area do quadrado:" + b.area_quadrado(b.lado));
-        System.out.println("perimetro do quadrado:" + b.perimetro_quadrado(b.lado));
+        int operacao = scanner.nextInt();
+        scanner.nextLine();
 
-        Triangulo c = new Triangulo();
-        c.altura = 12;
-        c.ladoB = 15;
-        c.ladoA = 15;
-        c.base = 18;
-        System.out.println("area do triangulo:" + c.area_triangulo(c.altura, c.base));
-        System.out.println("perimetro do triangulo:" + c.perimetro_triangulo(c.ladoA, c.ladoB, c.base));
+        System.out.print("Digite a forma geométrica (quadrado, circulo, triangulo ou retangulo): ");
+        String forma = scanner.nextLine();
 
-        Circulo d = new Circulo();
-        d.raio = 5;
-        System.out.println("area do circulo:" + d.area_circulo(d.raio));
-        System.out.println("perimetro:" + d.perimetro_circulo(d.raio));
+        if (forma.equals("quadrado")) {
+            Quadrado x = new Quadrado();
+            System.out.print("Digite o tamanho do lado do quadrado:");
+            x.lado = scanner.nextDouble();
+            if (operacao == 2) {
+                double resultado = x.area_quadrado(x.lado);
+                System.out.println("A área do quadrado é " + resultado);
+            } else {
+                double resultado = x.perimetro_quadrado(x.lado);
+                System.out.println("O perímetro do quadrado é " + resultado);
+            }
+        }
+
+        else if (forma.equals("circulo")) {
+            Circulo x = new Circulo();
+            System.out.print("Digite o tamanho do raio do circulo:");
+            x.raio = scanner.nextDouble();
+            if (operacao == 2) {
+                double resultado = x.area_circulo(x.raio);
+                System.out.println("A área do círculo é " + resultado);
+            } else {
+                double resultado = x.perimetro_circulo(x.raio);
+                System.out.println("O perímetro do circulo é " + resultado);
+            }
+        }
+
+        else if (forma.equals("triangulo")) {
+            Triangulo x = new Triangulo();
+            System.out.print("Digite o tamanho do lado A do triângulo:");
+            x.ladoA = scanner.nextDouble();
+            System.out.print("Digite o tamanho do lado B do triângulo:");
+            x.ladoB = scanner.nextDouble();
+            System.out.print("Digite o tamanho da base do triângulo:");
+            x.base = scanner.nextDouble();
+            System.out.print("Digite o tamanho da altura do triângulo:");
+            x.altura = scanner.nextDouble();
+            if (operacao == 2) {
+                double resultado = x.area_triangulo(x.altura, x.base);
+                System.out.println("A área do triângulo é " + resultado);
+            } else {
+                double resultado = x.perimetro_triangulo(x.ladoA, x.ladoB, x.base);
+                System.out.println("O perímetro do triângulo é " + resultado);
+            }
+        }
+
+        else if (forma.equals("retangulo")) {
+            Retangulo x = new Retangulo();
+            System.out.print("Digite o tamanho da largura do retangulo:");
+            x.largura = scanner.nextDouble();
+            System.out.print("Digite o tamanho da altura do retangulo:");
+            x.altura = scanner.nextDouble();
+            if (operacao == 2) {
+                double resultado = x.area_retangulo(x.altura, x.largura);
+                System.out.println("A área do retangulo é " + resultado);
+            } else {
+                double resultado = x.perimetro_retangulo(x.altura, x.largura);
+                System.out.println("O perímetro do retangulo é " + resultado);
+            }
+        }
 
     }
 }
